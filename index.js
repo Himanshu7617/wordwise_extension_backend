@@ -76,15 +76,16 @@ app.get('/randomWord/:idx', async(req,res) => {
         model: "gemini-2.0-flash",
         contents: randomWordPrompt,
       });
-      console.log(response.text);
+      //console.log(response.text);
     
   
    if(response) { 
-    const cleaned = responseString
+    const cleaned = response.text
   .replace(/```json\n?/, '')  // remove ```json or ```json\n
   .replace(/```/, '')         // remove trailing ```
   .trim();                    // trim whitespace or \n
 
+     console.log(cleaned);
 const parsedData = JSON.parse(cleaned); // finally parse it
 res.json(parsedData);                   // send real JSON to frontend
 
