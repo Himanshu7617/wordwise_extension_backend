@@ -1,7 +1,6 @@
 import { getAuth } from "firebase-admin/auth";
 import express from 'express';
 import admin from 'firebase-admin';
-import serviceAccountkey from './serviceAccountKey.json' with {type : 'json'};
 import  { GoogleGenAI} from '@google/genai';
 import dotenv from 'dotenv';
 
