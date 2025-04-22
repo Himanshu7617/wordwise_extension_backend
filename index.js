@@ -83,7 +83,7 @@ app.get('/randomWord/:idx', async(req,res) => {
     const responseString = response.text;
     responseString.replaceAll('`','');
 
-    res.send(JSON.stringify(responseString.split('json')[1].slice(0,-4)));
+    res.send(responseString.split('json')[1].slice(0,-4));
    }
   } catch (error) {
     res.send(error);
