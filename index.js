@@ -80,10 +80,14 @@ app.get('/randomWord/:idx', async(req,res) => {
     
   
    if(response) { 
-    const responseString = response.text;
-    responseString.replaceAll('`','');
+    const cleaned = responseString
+  .replace(/```json\n?/, '')  // remove ```json or ```json\n
+  .replace(/```/, '')         // remove trailing ```
+  .trim();                    // trim whitespace or \n
 
-    res.send(responseString.split('json')[1].slice(0,-4));
+const parsedData = JSON.parse(cleaned); // finally parse it
+res.json(parsedData);                   // send real JSON to frontend
+
    }
   } catch (error) {
     res.send(error);
