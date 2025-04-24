@@ -116,7 +116,7 @@ app.post('/addWord',async (req, res) =>  {
     const response = await allWordsDB.collection(`users/${userID}/words`).add(newWord);
     
     if(response) { 
-      res.status(201).json({message : "added successfully", word : response.json()});
+      res.status(201).send({message : "added successfully", word : response.json()});
     }
   } catch (error) {
     console.error(error);
