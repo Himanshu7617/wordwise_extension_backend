@@ -114,6 +114,7 @@ app.post('/addWord',async (req, res) =>  {
       res.status(201).json({message : "added successfully", word : response.json()});
     }
   } catch (error) {
+    console.error(error);
     res.status(500).send(error);
   }
  
